@@ -63,6 +63,8 @@
 #include <AP_BoardConfig/AP_BoardConfig.h>
 #include <AP_Frsky_Telem/AP_Frsky_Telem.h>
 
+#include <AP_Braking/AP_Brake.h>  					// Braking library
+
 #include "AP_Arming.h"
 #include "compat.h"
 

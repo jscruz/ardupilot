@@ -437,12 +437,14 @@ void Rover::update_current_mode(void)
     switch (control_mode){
     case AUTO:
     case RTL:
+	    SRV_Channels::set_output_scaled(SRV_Channel::k_brake,0);
         calc_lateral_acceleration();
         calc_nav_steer();
         calc_throttle(g.speed_cruise);
         break;
 
     case GUIDED: {
+		SRV_Channels::set_output_scaled(SRV_Channel::k_brake,0);
         switch (guided_mode){
         case Guided_Angle:
             nav_set_yaw_speed();
@@ -474,6 +476,7 @@ void Rover::update_current_mode(void)
     }
 
     case STEERING: {
+		SRV_Channels::set_output_scaled(SRV_Channel::k_brake,0);
         /*
           in steering mode we control lateral acceleration
           directly. We first calculate the maximum lateral
@@ -504,6 +507,7 @@ void Rover::update_current_mode(void)
 
     case LEARNING:
     case MANUAL:
+	    SRV_Channels::set_output_scaled(SRV_Channel::k_brake,0);
         /*
           in both MANUAL and LEARNING we pass through the
           controls. Setting servo_out here actually doesn't matter, as
@@ -522,6 +526,8 @@ void Rover::update_current_mode(void)
         // hold position - stop motors and center steering
         SRV_Channels::set_output_scaled(SRV_Channel::k_throttle,0);
         SRV_Channels::set_output_scaled(SRV_Channel::k_steering,0);
+		// Create a function to act on the brake based on the accelaration
+		enable_brake(ground_speed);
         break;
 
     case INITIALISING:
