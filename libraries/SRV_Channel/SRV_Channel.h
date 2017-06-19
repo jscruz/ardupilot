@@ -103,6 +103,7 @@ public:
         k_tracker_pitch         = 72,            ///< antennatracker pitch
         k_throttleLeft          = 73,
         k_throttleRight         = 74,
+        k_brake                 = 75,
         k_nr_aux_servo_functions         ///< This must be the last enum value (only add new values _before_ this one)
     } Aux_servo_function_t;
 

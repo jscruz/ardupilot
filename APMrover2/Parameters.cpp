@@ -607,6 +607,7 @@ void Rover::load_parameters(void)
     
     SRV_Channels::set_default_function(CH_1, SRV_Channel::k_steering);
     SRV_Channels::set_default_function(CH_3, SRV_Channel::k_throttle);
+	SRV_Channels::set_default_function(CH_4, SRV_Channel::k_brake);
     
     const uint8_t old_rc_keys[14] = { Parameters::k_param_rc_1_old,  Parameters::k_param_rc_2_old,
                                       Parameters::k_param_rc_3_old,  Parameters::k_param_rc_4_old,
